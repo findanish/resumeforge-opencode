@@ -12,8 +12,10 @@ interface AppState {
   user: User | null
   setUser: (user: User | null) => void
 
+  profile: Profile | null
   profiles: Profile[]
   setProfiles: (profiles: Profile[]) => void
+  setProfile: (profile: Profile | null) => void
   addProfile: (profile: Profile) => void
   updateProfile: (id: string, data: Partial<Profile>) => void
 
@@ -47,12 +49,15 @@ export const useAppStore = create<AppState>((set) => ({
   user: null,
   setUser: (user) => set({ user }),
 
+  profile: null,
   profiles: [],
   setProfiles: (profiles) => set({ profiles }),
+  setProfile: (profile) => set({ profile }),
   addProfile: (profile) => set((state) => ({ profiles: [profile, ...state.profiles] })),
   updateProfile: (id, data) =>
     set((state) => ({
       profiles: state.profiles.map((p) => (p.id === id ? { ...p, ...data } : p)),
+      profile: state.profile?.id === id ? { ...state.profile, ...data } : state.profile,
     })),
 
   resumes: [],

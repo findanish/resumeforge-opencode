@@ -132,7 +132,7 @@ export default function DashboardLayout({
                 <Avatar className="h-8 w-8">
                   <AvatarImage src={user?.avatar_url || ''} />
                   <AvatarFallback className="text-xs">
-                    {getInitials(user?.full_name)}
+                    {getInitials(user?.full_name || null)}
                   </AvatarFallback>
                 </Avatar>
                 {!sidebarCollapsed && (
