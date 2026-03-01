@@ -74,22 +74,45 @@ export default function ProfilePage() {
     fetchProfile()
   }, [user, supabase, setProfile])
 
+  const parseResume = async (text: string) => {
+    const response = await fetch('/api/profile/parse', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ resumeText: text }),
+    })
+
+    if (!response.ok) throw new Error('Failed to parse resume')
+    return response.json()
+  }
+
+  const parsePdf = async (file: File) => {
+    const formData = new FormData()
+    formData.append('file', file)
+
+    const response = await fetch('/api/profile/parse-pdf', {
+      method: 'POST',
+      body: formData,
+    })
+
+    if (!response.ok) throw new Error('Failed to parse PDF')
+    return response.json()
+  }
+
   const onDrop = async (acceptedFiles: File[]) => {
     const file = acceptedFiles[0]
     if (!file) return
 
     setLoading(true)
     try {
-      const text = await file.text()
-      const response = await fetch('/api/profile/parse', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ resumeText: text }),
-      })
+      let parsed
 
-      if (!response.ok) throw new Error('Failed to parse resume')
+      if (file.type === 'application/pdf' || file.name.endsWith('.pdf')) {
+        parsed = await parsePdf(file)
+      } else {
+        const text = await file.text()
+        parsed = await parseResume(text)
+      }
 
-      const parsed = await response.json()
       setName(parsed.name || '')
       setEmail(parsed.email || '')
       setPhone(parsed.phone || '')
@@ -281,7 +304,7 @@ export default function ProfilePage() {
                         : 'Drag & drop your resume here, or click to browse'}
                     </p>
                     <p className="text-2xs text-muted-foreground">
-                      Supports .txt, .pdf
+                      Supports .txt and .pdf files
                     </p>
                   </div>
                 )}
