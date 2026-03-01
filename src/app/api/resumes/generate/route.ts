@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
         .from('profiles')
         .select('parsed_data')
         .eq('id', profileId)
-        .single()
+        .maybeSingle()
 
       if (profileRecord?.parsed_data) {
         profile = profileRecord.parsed_data
@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
         .from('jobs')
         .select('parsed_requirements')
         .eq('id', jobId)
-        .single()
+        .maybeSingle()
 
       if (jobRecord?.parsed_requirements) {
         job = jobRecord.parsed_requirements

@@ -1,0 +1,53 @@
+Anish Mehta
+Vancouver, BC | +1 (204) 951-8861 | findanish@gmail.com
+linkedin.com/in/anish-mehta-64a051117
+
+Summary
+IT Engineer with 8+ years of experience supporting internal IT systems in SaaS-driven environments. Strong background in identity management, endpoint administration, SaaS lifecycle operations, and workflow automation. Focused on improving onboarding experiences, reducing manual work through automation, and aligning IT support with business needs across distributed teams.
+
+Core Skills
+• Identity and Access: Okta, JumpCloud, Active Directory
+• Endpoint Management: Jamf, Jumpcloud, HexNode, Apple Business Manager
+• SaaS Platforms: Google Workspace, Slack, Atlassian, Microsoft 365
+• Lifecycle Operations: Onboarding, Offboarding, Access Provisioning
+• Automation: BetterCloud, Okta Workflows, Zapier, Jira
+• Security: CrowdStrike, Druva, Netwrix Endpoint Protector
+• IT Operations: Auditing, Asset Tracking, License Optimization, Vendor Coordination
+
+Experience
+Senior IT Specialist
+Sauce Labs | Apr 2022 to Nov 2025
+• Managed core SaaS platforms including Okta, Google Workspace, Slack, Microsoft 365, Atlassian, and Jamf
+• Built automated onboarding and offboarding workflows to improve employee lifecycle experience
+• Built API integrations to automate offboarding across 140+ SaaS applications, improving lifecycle consistency and reducing manual work
+• Introduced form-driven onboarding workflows for select departments to streamline provisioning
+• Served as primary Windows administrator
+• Partnered with Security and Engineering teams to support internal initiatives
+• Managed SaaS licensing and vendor coordination across 200+ tools
+• Supported endpoint protection using CrowdStrike and Druva
+• Brought structured ownership to cross-functional company wide initiatives including Slack Grid migration, Okta RBAC rollout, and Windows migration to JumpCloud
+
+Corporate IT Manager / System Administrator
+Executive Group of Hotels and Real Estate | Oct 2019 to Jan 2022
+• Led IT operations across 14 hotel properties and corporate offices
+• Migrated 450+ users to cloud collaboration platforms
+• Managed Microsoft 365, Azure, Exchange Online, and VMware environments
+• Implemented centralized helpdesk and collaboration tools
+• Oversaw IT procurement and vendor relationships
+
+IT Specialist
+Four Seasons Resort and Residences | Mar 2016 to 2019
+• Supported business-critical IT systems in a 24/7 environment
+• Administered Active Directory and Windows Server systems
+• Maintained PCI compliance standards
+
+Strengths
+• Ownership mindset for regional IT support
+• Employee lifecycle enablement
+• SaaS access governance
+• Automation driven improvements
+• Stakeholder collaboration across business teams
+
+Education
+• Post Graduate Diploma, Human Resource Management, Centennial College
+• Bachelor of Arts, Psychology, Ranchi University

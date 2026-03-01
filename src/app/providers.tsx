@@ -15,17 +15,17 @@ export function Providers({ children }: { children: React.ReactNode }) {
         const { data: { session } } = await supabase.auth.getSession()
         
         if (session?.user) {
-          const { data: profile } = await supabase
+          const { data: profile, error: profileError } = await supabase
             .from('profiles')
             .select('*')
             .eq('user_id', session.user.id)
-            .single()
+            .maybeSingle()
 
           setUser({
             id: session.user.id,
             email: session.user.email || '',
-            full_name: profile?.parsed_data?.name || session.user.user_metadata?.full_name,
-            avatar_url: profile?.parsed_data?.avatar_url || session.user.user_metadata?.avatar_url,
+            full_name: profile?.parsed_data?.name || session.user.user_metadata?.full_name || null,
+            avatar_url: profile?.parsed_data?.avatar_url || session.user.user_metadata?.avatar_url || null,
           })
         }
       } catch (error) {
@@ -43,13 +43,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
           .from('profiles')
           .select('*')
           .eq('user_id', session.user.id)
-          .single()
+          .maybeSingle()
 
         setUser({
           id: session.user.id,
           email: session.user.email || '',
-          full_name: profile?.parsed_data?.name || session.user.user_metadata?.full_name,
-          avatar_url: profile?.parsed_data?.avatar_url || session.user.user_metadata?.avatar_url,
+          full_name: profile?.parsed_data?.name || session.user.user_metadata?.full_name || null,
+          avatar_url: profile?.parsed_data?.avatar_url || session.user.user_metadata?.avatar_url || null,
         })
       } else {
         setUser(null)
