@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { parseResumeWithAI } from '@/lib/groq'
-import { PdfReader } from 'pdfreader'
+import { PDFParser } from 'pdf2json'
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
@@ -18,24 +18,20 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const buffer = Buffer.from(arrayBuffer)
     
     const text = await new Promise<string>((resolve, reject) => {
-      const pdfReader = new PdfReader()
-      let text = ''
-
-      pdfReader.parseBuffer(buffer, (err, item) => {
-        if (err) {
-          reject(err)
-          return
-        }
-
-        if (!item) {
-          resolve(text)
-          return
-        }
-
-        if (item.text) {
-          text += item.text + ' '
-        }
+      // Workaround for type issues
+      const pdfParser = new (PDFParser as any)(null, 1)
+      
+      pdfParser.on('pdfParser_dataError', (errData: any) => {
+        console.error('PDF parsing error:', errData)
+        reject(new Error('Failed to parse PDF'))
       })
+      
+      pdfParser.on('pdfParser_dataReady', () => {
+        const text = pdfParser.getRawTextContent()
+        resolve(text || '')
+      })
+      
+      pdfParser.parseBuffer(buffer)
     })
 
     if (!text || text.trim().length < 50) {
