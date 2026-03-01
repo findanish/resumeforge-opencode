@@ -25,7 +25,7 @@ ${resumeText}`
 
   const completion = await groq.chat.completions.create({
     messages: [{ role: 'user', content: prompt }],
-    model: 'llama-3.1-70b-versatile',
+    model: 'llama-3.3-70b-versatile',
     temperature: 0.1,
   })
 
@@ -58,7 +58,7 @@ ${jobDescription}`
 
   const completion = await groq.chat.completions.create({
     messages: [{ role: 'user', content: prompt }],
-    model: 'llama-3.1-70b-versatile',
+    model: 'llama-3.3-70b-versatile',
     temperature: 0.1,
   })
 
@@ -92,7 +92,7 @@ Generate the resume in markdown format:`
 
   const completion = await groq.chat.completions.create({
     messages: [{ role: 'user', content: prompt }],
-    model: 'llama-3.1-70b-versatile',
+    model: 'llama-3.3-70b-versatile',
     temperature: 0.3,
   })
 
@@ -127,7 +127,7 @@ Analyze and return JSON:`
 
   const completion = await groq.chat.completions.create({
     messages: [{ role: 'user', content: prompt }],
-    model: 'llama-3.1-70b-versatile',
+    model: 'llama-3.3-70b-versatile',
     temperature: 0.1,
   })
 
@@ -153,7 +153,7 @@ Generate LaTeX:`
 
   const completion = await groq.chat.completions.create({
     messages: [{ role: 'user', content: prompt }],
-    model: 'llama-3.1-70b-versatile',
+    model: 'llama-3.3-70b-versatile',
     temperature: 0.1,
   })
 

@@ -85,33 +85,14 @@ export default function ProfilePage() {
     return response.json()
   }
 
-  const parsePdf = async (file: File) => {
-    const formData = new FormData()
-    formData.append('file', file)
-
-    const response = await fetch('/api/profile/parse-pdf', {
-      method: 'POST',
-      body: formData,
-    })
-
-    if (!response.ok) throw new Error('Failed to parse PDF')
-    return response.json()
-  }
-
   const onDrop = async (acceptedFiles: File[]) => {
     const file = acceptedFiles[0]
     if (!file) return
 
     setLoading(true)
     try {
-      let parsed
-
-      if (file.type === 'application/pdf' || file.name.endsWith('.pdf')) {
-        parsed = await parsePdf(file)
-      } else {
-        const text = await file.text()
-        parsed = await parseResume(text)
-      }
+      const text = await file.text()
+      const parsed = await parseResume(text)
 
       setName(parsed.name || '')
       setEmail(parsed.email || '')
@@ -141,7 +122,6 @@ export default function ProfilePage() {
     onDrop,
     accept: {
       'text/plain': ['.txt'],
-      'application/pdf': ['.pdf'],
     },
     maxFiles: 1,
   })
@@ -304,7 +284,7 @@ export default function ProfilePage() {
                         : 'Drag & drop your resume here, or click to browse'}
                     </p>
                     <p className="text-2xs text-muted-foreground">
-                      Supports .txt and .pdf files
+                      Supports .txt files (paste resume content directly for best results)
                     </p>
                   </div>
                 )}
